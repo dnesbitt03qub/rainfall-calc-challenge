@@ -79,6 +79,6 @@ All tests can be run locally using `run_tests.sh`. If you have docker installed 
 
 Individual tests can be run from their folders using `build_test.sh` and `run_test.sh` or, for Docker, `build_docker.sh` and `run_docker.sh`
 
-[0]: ftp.ncdc.noaa.gov/pub/data/hpd/auto/v2/alpha/15min/hpd_all.15min.csv.tar.gz
-[1]: ftp.ncdc.noaa.gov/pub/data/hpd/auto/v2/alpha/15min/readme.15min.txt
+[0]: https://xe.pw/6emD
+[1]: https://xe.pw/6emC
 [2]: https://www.0x44.pw/trdc/201905challenge.tar.gz
