@@ -8,6 +8,8 @@ fi
 for DIR in */ ; do
     [ $DIR == 'data/' ] && continue
     echo $DIR
-    $DIR/build_test.sh
-    $DIR/run_test.sh
+    cd $DIR
+    ./build_test.sh
+    ./run_test.sh
+    cd ..
 done
