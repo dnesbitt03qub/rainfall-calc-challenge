@@ -7,6 +7,12 @@
 *.cpython
 */obj/*
 data/*
+201905challenge.tar.gz
+
+# Python ignores
+venv/
+*.pyc
+temp.py
 
 # ----------------
 # Elixir ignores
