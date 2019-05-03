@@ -1,4 +1,5 @@
 import time
+import numpy as np
 
 DATA_PATH = '../data/all.csv'
 
@@ -20,7 +21,8 @@ def simpleSearch():
     while True:
         line = file.readline()
         line_count += 1
-        print(line_count)
+        if line_count % 10000 == 0:
+            print('{:.2f}'.format(line_count * 100 / 4950328))
         if line[:3] == '==>':
             continue
         
@@ -50,9 +52,11 @@ def simpleSearch():
         
         times_and_associated_stations[time_with_rain].append(station_numeric)
         
-    
-    matching_stations = max(times_and_associated_stations.iterkeys())
-    total = sum(matching_stations)
+    # print(times_and_associated_stations)
+    matching_stations = max(list(times_and_associated_stations.keys()))
+    print('Max time raining ' + str(matching_stations))
+    # print(times_and_associated_stations[matching_stations])
+    total = sum(np.unique(times_and_associated_stations[matching_stations]))
 
     file.close()
     
