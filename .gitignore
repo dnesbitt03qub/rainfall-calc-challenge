@@ -7,6 +7,7 @@
 *.cpython
 */obj/*
 data/*
+*.tar.gz
 
 # ----------------
 # Elixir ignores
@@ -37,3 +38,7 @@ elixir/*.ez
 elixir/*.tar
 
 elixir/.elixir_ls
+
+# Rust Ignores
+**/target/
+Cargo.lock
