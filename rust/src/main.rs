@@ -21,8 +21,8 @@ fn main() -> io::Result<()> {
         if lat >= 45 {
             let items: Vec<&str> = buffer.split(',').collect();
             //iterate through values, starting at 6 and stepping by 5
-            //until gone through 96 values, aka through the 481st item
-            for interval in (6..481).step_by(5) {
+            //until gone through 96 values, aka through the 486th item
+            for interval in (6..487).step_by(5) {
                 if items[interval] != "0".to_string() && items[interval] != "-9999".to_string() {
                     let counter = durations.entry(items[0].to_string()).or_insert(0);
                     *counter += 15;

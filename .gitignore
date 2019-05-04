@@ -8,6 +8,8 @@
 */obj/*
 data/*
 *.tar.gz
+results
+result
 
 # ----------------
 # Elixir ignores
