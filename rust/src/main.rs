@@ -21,8 +21,8 @@ fn main() -> io::Result<()> {
         if lat >= 45 {
             let items: Vec<&str> = buffer.split(',').collect();
             //iterate through values, starting at 6 and stepping by 5
-            //until gone through 96 values, aka through the 481st item
-            for interval in (6..481).step_by(5) {
+            //until gone through 96 values, aka through the 486th item
+            for interval in (6..487).step_by(5) {
                 if items[interval] != "0".to_string() && items[interval] != "-9999".to_string() {
                     let counter = durations.entry(items[0].to_string()).or_insert(0);
                     *counter += 15;
@@ -38,8 +38,8 @@ fn main() -> io::Result<()> {
 
     let elapsed = start.elapsed();
     let seconds = ((elapsed.as_secs() as f64) + (elapsed.subsec_nanos() as f64 / 1_000_000_000.0)) * 1000.0;
-    //println!("{:#?}", sorted);
-    println!("pard68, rust, {}, {}", result[1], seconds);
+    println!("{:#?}", sorted);
+    //println!("pard68, rust, {}, {}", result[1], seconds);
 
     Ok(())
 }
