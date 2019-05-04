@@ -38,8 +38,8 @@ fn main() -> io::Result<()> {
 
     let elapsed = start.elapsed();
     let seconds = ((elapsed.as_secs() as f64) + (elapsed.subsec_nanos() as f64 / 1_000_000_000.0)) * 1000.0;
-    println!("{:#?}", sorted);
-    //println!("pard68, rust, {}, {}", result[1], seconds);
+    //println!("{:#?}", sorted);
+    println!("pard68, rust, {}, {}", result[1], seconds);
 
     Ok(())
 }
