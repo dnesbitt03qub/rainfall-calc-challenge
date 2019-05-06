@@ -7,12 +7,18 @@
 *.cpython
 */obj/*
 data/*
+<<<<<<< HEAD
 201905challenge.tar.gz
 
 # Python ignores
 venv/
 *.pyc
 temp.py
+=======
+*.tar.gz
+results
+result
+>>>>>>> origin/master
 
 # ----------------
 # Elixir ignores
@@ -43,3 +49,7 @@ elixir/*.ez
 elixir/*.tar
 
 elixir/.elixir_ls
+
+# Rust Ignores
+**/target/
+Cargo.lock

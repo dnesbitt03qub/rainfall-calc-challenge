@@ -2,16 +2,16 @@ Dataset
 =======
 
 [15 minute readings of NCEI's COOP HPD Data from 2014 - March
-2019](ftp://ftp.ncdc.noaa.gov/pub/data/hpd/auto/v2/alpha/15min/hpd_all.15min.csv.tar.gz)
+2019][0]
 
 Download, extract, and then concatonate all files together into a single
 CSV.
 
-To ensure a consistent document, pre-concatonated tarball will be used
+To ensure a consistent document, [this][2] pre-concatonated tarball will be used
 for testing.
 
 Reference the dataset's
-[README](ftp://ftp.ncdc.noaa.gov/pub/data/hpd/auto/v2/alpha/15min/readme.15min.txt)
+[README][1]
 for an understanding of the csv headings.
 
 Challenge
@@ -78,3 +78,7 @@ How to run tests
 All tests can be run locally using `run_tests.sh`. If you have docker installed you can build all tests using `build_docker_tests.sh`, then run using `run_docker_test.sh`. Docker will manage the test dependancies for you.
 
 Individual tests can be run from their folders using `build_test.sh` and `run_test.sh` or, for Docker, `build_docker.sh` and `run_docker.sh`
+
+[0]: https://xe.pw/6emD
+[1]: https://xe.pw/6emC
+[2]: https://www.0x44.pw/trdc/201905challenge.tar.gz
