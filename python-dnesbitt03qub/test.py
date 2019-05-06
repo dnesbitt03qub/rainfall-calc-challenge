@@ -1,5 +1,4 @@
 import time
-import numpy as np
 
 DATA_PATH = '../data/all.csv'
 
