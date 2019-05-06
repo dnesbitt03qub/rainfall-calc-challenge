@@ -2,16 +2,15 @@ import time
 
 DATA_PATH = '../data/all.csv'
 
-def masked(val):
-    return 1 if val > 0 else 0
-
 def simpleSearch():
 
     file = open(DATA_PATH, 'r')
     
-    file.readline()
+    header = file.readline()
     latitude_column = 1
     relevant_columns = list(range(6, 486, 5))
+    # header_split = header.split(',')
+    # header_columns = [header_split[x] for x in relevant_columns]
     line_count = 1
 
     times_for_stations = {}
@@ -35,7 +34,6 @@ def simpleSearch():
         if len(lineSplit) <= latitude_column:
             continue
         
-        
         # Don't consider lines from stations South of the 45th parallel
         if float(lineSplit[latitude_column]) < 45.0:
             continue
@@ -43,8 +41,10 @@ def simpleSearch():
         station = lineSplit[0]
         
         rainfall = [int(lineSplit[x]) for x in relevant_columns ]
-        rainfall_mask = [masked(x) for x in rainfall]
-        time_with_rain = sum(rainfall_mask)
+        time_with_rain = 0
+        for r in rainfall:
+            if r > 0:
+                time_with_rain += 1
         
         if time_with_rain > 0:
             if station in times_for_stations.keys():
@@ -52,8 +52,6 @@ def simpleSearch():
             else:   
                 times_for_stations[station] = time_with_rain
     
-    print('Times for stations:')
-    print(times_for_stations)
     stations_for_each_time = {}
     for station, time in times_for_stations.items():
         if time in stations_for_each_time.keys():
@@ -61,23 +59,13 @@ def simpleSearch():
         else:
             stations_for_each_time[time] = [ station ]
         
-    
-    print('Stations for each time')
-    print(stations_for_each_time)
-    
-    print('Times in dict')
-    print(sorted(stations_for_each_time.keys()))
-    
-    print('List of keys')
-    print(list(stations_for_each_time.keys()))
     longest_time = max(list(stations_for_each_time.keys()))
     
     print('Found longest time')
-    print(longest_time)
+    print(longest_time * 15)
     
     print('Stations with that time')
     print(stations_for_each_time[longest_time])
-    # print('Max time raining ' + str(longest_time))
     stations_numeric = [ int(station[3:]) for station in stations_for_each_time[longest_time]]
     total = sum(stations_numeric)
 
