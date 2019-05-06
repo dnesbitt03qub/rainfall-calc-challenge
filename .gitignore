@@ -7,18 +7,14 @@
 *.cpython
 */obj/*
 data/*
-<<<<<<< HEAD
-201905challenge.tar.gz
+*.tar.gz
+results
+result
 
 # Python ignores
 venv/
 *.pyc
 temp.py
-=======
-*.tar.gz
-results
-result
->>>>>>> origin/master
 
 # ----------------
 # Elixir ignores
