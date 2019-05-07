@@ -3,7 +3,7 @@ import time
 
 USER = 'specs'
 LANG = 'python'
-NOTES = ''
+NOTES = 'ugly. needs cleanup.'
 PATH = os.path.join(
     os.path.abspath(os.path.dirname(__file__)),
     'data',
