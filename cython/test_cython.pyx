@@ -122,4 +122,4 @@ start = int(round(ti.time() * 1000))
 result = simpleSearch()
 end = int(round(ti.time() * 1000))
 time = end - start
-print('{}, {}, {}, {}, {}'.format('dnesbitt03qub', 'python', result, time, 'nasty and slow'))
+print('{}, {}, {}, {}, {}'.format('dnesbitt03qub', 'cython', result, time, 'nasty and slow'))
