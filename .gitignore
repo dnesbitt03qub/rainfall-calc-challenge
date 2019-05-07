@@ -11,6 +11,11 @@ data/*
 results
 result
 
+# Python ignores
+venv/
+*.pyc
+temp.py
+
 # ----------------
 # Elixir ignores
 # ----------------
