@@ -1,7 +1,7 @@
 FROM alpine
 
 WORKDIR /home
-RUN mkdir /home/data
+RUN mkdir /data
 
 # ----------------------------------
 # Put dependancies here...
