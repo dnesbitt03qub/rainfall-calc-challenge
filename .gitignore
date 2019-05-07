@@ -49,3 +49,6 @@ elixir/.elixir_ls
 # Rust Ignores
 **/target/
 Cargo.lock
+
+# Cython Ignores
+*/test_cython.c*
