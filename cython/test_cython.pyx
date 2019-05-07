@@ -118,11 +118,8 @@ def simpleSearch():
     
     return total
 
-
-if __name__ == '__main__':
-    
-    start = int(round(ti.time() * 1000))
-    result = simpleSearch()
-    end = int(round(ti.time() * 1000))
-    time = end - start
-    print('{}, {}, {}, {}, {}'.format('dnesbitt03qub', 'python', result, time, 'nasty and slow'))
+start = int(round(ti.time() * 1000))
+result = simpleSearch()
+end = int(round(ti.time() * 1000))
+time = end - start
+print('{}, {}, {}, {}, {}'.format('dnesbitt03qub', 'cython', result, time, 'nasty and slow'))

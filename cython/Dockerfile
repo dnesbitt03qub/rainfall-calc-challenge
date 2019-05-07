@@ -6,7 +6,13 @@ RUN mkdir /data
 # ----------------------------------
 # Put dependancies here...
 RUN apk update && apk add \
-    bash
+    bash \
+    python3 \
+    python3-dev \
+    build-base
+
+RUN pip3 install cython
+    
 
 COPY . /home
 
