@@ -1,5 +1,4 @@
 import time
-import numpy as np
 
 DATA_PATH = '../data/all.csv'
 
@@ -7,21 +6,22 @@ def simpleSearch():
 
     file = open(DATA_PATH, 'r')
     
-    header = file.readline()
+    #header = file.readline()
+    file.readline()
     latitude_column = 1
     relevant_columns = list(range(6, 486, 5))
     # header_split = header.split(',')
     # header_columns = [header_split[x] for x in relevant_columns]
-    line_count = 1
+    #line_count = 1
 
     times_for_stations = {}
 
     while True:
         line = file.readline()
         
-        line_count += 1
-        if line_count % 50000 == 0:
-            print('{:.2f}'.format(line_count * 100 / 4950328))
+        #line_count += 1
+        #if line_count % 50000 == 0:
+        #    print('{:.2f}'.format(line_count * 100 / 4950328))
         
         if line[:3] == '==>':
             continue
@@ -62,11 +62,11 @@ def simpleSearch():
         
     longest_time = max(list(stations_for_each_time.keys()))
     
-    print('Found longest time')
-    print(longest_time * 15)
+    #print('Found longest time')
+    #print(longest_time * 15)
     
-    print('Stations with that time')
-    print(stations_for_each_time[longest_time])
+    #print('Stations with that time')
+    #print(stations_for_each_time[longest_time])
     stations_numeric = [ int(station[3:]) for station in stations_for_each_time[longest_time]]
     total = sum(stations_numeric)
 
