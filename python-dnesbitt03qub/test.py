@@ -1,12 +1,14 @@
-import time
+import time as ti
 
 DATA_PATH = '../data/all.csv'
 
 def simpleSearch():
 
+    #start_all = int(round(ti.time() * 1000))
+    #start = int(round(ti.time() * 1000))
     file = open(DATA_PATH, 'r')
     
-    #header = file.readline()
+    header = file.readline()
     file.readline()
     latitude_column = 1
     relevant_columns = list(range(6, 486, 5))
@@ -15,9 +17,20 @@ def simpleSearch():
     #line_count = 1
 
     times_for_stations = {}
+    
+    #end = int(round(ti.time() * 1000))
+    #setup = end - start
+    #start = int(round(ti.time() * 1000))
+    #reading = 0
+    #actual_processing = 0
 
     while True:
+        #start_loop = int(round(ti.time() * 1000))
         line = file.readline()
+        #end_loop = int(round(ti.time() * 1000))
+        #reading += end_loop - start_loop
+        #start_loop = int(round(ti.time() * 1000))
+        
         
         #line_count += 1
         #if line_count % 50000 == 0:
@@ -29,15 +42,32 @@ def simpleSearch():
         if not line:
             break 
         
+        # Get the latitude
+        line_length = len(line)
+        pos_pre_lat_comma = 0
+        
+        while pos_pre_lat_comma < line_length:
+            if line[pos_pre_lat_comma] == ',':
+                break
+            pos_pre_lat_comma += 1
+                
+        pos_lat_decimal_point = pos_pre_lat_comma
+        while pos_lat_decimal_point < line_length:
+            if line[pos_lat_decimal_point] == '.':
+                break
+            pos_lat_decimal_point += 1
+            
+        lat_characteristic = line[pos_pre_lat_comma+1:pos_lat_decimal_point]
+        
+        if not lat_characteristic:
+            continue
+        
+        int_lat = int(lat_characteristic)
+        
+        if int_lat < 45:
+            continue
         
         lineSplit = line.split(',')
-        
-        if len(lineSplit) <= latitude_column:
-            continue
-        
-        # Don't consider lines from stations South of the 45th parallel
-        if float(lineSplit[latitude_column]) < 45.0:
-            continue
         
         station = lineSplit[0]
         
@@ -52,6 +82,14 @@ def simpleSearch():
                 times_for_stations[station] += time_with_rain
             else:   
                 times_for_stations[station] = time_with_rain
+                
+        #end_loop = int(round(ti.time() * 1000))
+        #actual_processing += end_loop - start_loop
+                
+    
+    #end = int(round(ti.time() * 1000))
+    #main_loop = end - start
+    #start = int(round(ti.time() * 1000))
     
     stations_for_each_time = {}
     for station, time in times_for_stations.items():
@@ -72,13 +110,19 @@ def simpleSearch():
 
     file.close()
     
+    #end = int(round(ti.time() * 1000))
+    #dictionary_work = end - start
+    #end_all = int(round(ti.time() * 1000))
+    #all_time = end_all - start_all
+    #print('All {}\n\tSetup {}\n\tMain loop {}\n\t\tReading {}\n\t\tActual Processing {}\n\t\tNot captured {}\n\tDictionary Work {}'.format(all_time, setup, main_loop, reading, actual_processing, main_loop - reading - actual_processing, dictionary_work))
+    
     return total
 
 
 if __name__ == '__main__':
     
-    start = int(round(time.time() * 1000))
+    start = int(round(ti.time() * 1000))
     result = simpleSearch()
-    end = int(round(time.time() * 1000))
+    end = int(round(ti.time() * 1000))
     time = end - start
     print('{}, {}, {}, {}, {}'.format('dnesbitt03qub', 'python', result, time, 'nasty and slow'))
