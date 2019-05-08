@@ -16,6 +16,9 @@ venv/
 *.pyc
 temp.py
 
+# Node ignores
+node_modules
+
 # ----------------
 # Elixir ignores
 # ----------------
