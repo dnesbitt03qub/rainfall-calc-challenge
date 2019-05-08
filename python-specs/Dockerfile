@@ -10,10 +10,11 @@ RUN apk update && apk add \
     python3 \
     python3-dev
 
-COPY . /root
+ADD . /root/specs/
+WORKDIR /root/specs
 
 # ----------------------------------
 # Put build command (if any) in this script...
-RUN sh /root/build_test.sh
+RUN sh /root/specs/build_test.sh
 
-ENTRYPOINT sh /root/run_test.sh
+ENTRYPOINT sh /root/specs/run_test.sh
