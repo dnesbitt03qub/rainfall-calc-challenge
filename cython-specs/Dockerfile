@@ -1,20 +1,23 @@
-FROM alpine:3.9
+FROM alpine
 
-WORKDIR /root
-RUN mkdir /root/data
+WORKDIR /home
+RUN mkdir /data
 
 # ----------------------------------
 # Put dependancies here...
 RUN apk update && apk add \
     bash \
     python3 \
-    python3-dev
+    python3-dev \
+    build-base
 
-ADD . /root/specs/
-WORKDIR /root/specs
+RUN pip3 install cython
+    
+
+COPY . /home
 
 # ----------------------------------
 # Put build command (if any) in this script...
-RUN sh /root/specs/build_test.sh
+RUN sh /home/build_test.sh
 
-ENTRYPOINT sh /root/specs/run_test.sh
+ENTRYPOINT sh /home/run_test.sh
