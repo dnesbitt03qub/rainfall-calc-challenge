@@ -15,6 +15,8 @@ readStream.on('data', function(chunk) {
   data[0] = lastLine + data[0]
   lastLine = data.splice(-1)
   data.forEach((r, i) => {
+    const lat = parseFloat(r.substring(12, 19))
+    if (lat <= 45) { return }
     let cols = r.split(',')
     if (cols[0] === 'StnID' || cols[1] <= 45) { return }
     let prevTime = stations[cols[0]] || 0
