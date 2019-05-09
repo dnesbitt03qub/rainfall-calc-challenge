@@ -30,9 +30,9 @@ string getTextFromFile() {
 int main(int argc, char * argv[]) {
     auto id = Timer::timerBegin();
     auto resultSimple = superSimple();
-    auto timeSimple = Timer::timerEnd(id);
+    auto timeSimple = Timer::timerEnd(id) / 1000;
 
-    cout << "dnesbitt03qub,C++," << resultSimple << "," << timeSimple << "simple"
+    cout << "dnesbitt03qub,C++," << resultSimple << "," << timeSimple << ",simple"
 	 << endl;
 
     return 0;
@@ -64,8 +64,12 @@ int superSimple() {
 	
 	// Continue
 	if (line[0] == '=') continue;
+	if (line.empty()) {
+	    continue;
+	}
 
-	const string lat = line.substr(10,8);
+	const string lat = line.substr(12,7);
+
 	const float lat_float = stof(lat);
 
 	if (lat_float < 45.) continue;
@@ -76,7 +80,7 @@ int superSimple() {
 	int timeWithRain = 0;
 
 	// For each column in the file
-	while (getline(lineStream, value, '.')) {
+	while (getline(lineStream, value, ',')) {
 	    columns.push_back(value);
 	}
 
@@ -99,7 +103,7 @@ int superSimple() {
     int longestTime = (*(stationsForEachTime.rbegin())).first;
     int total = 0;
     for (const auto& stationID : stationsForEachTime[longestTime]) {
-	int stationNumeric = stoi(stationID.substr(2));
+	int stationNumeric = stoi(stationID.substr(3));
 	total += stationNumeric;
     }
     
