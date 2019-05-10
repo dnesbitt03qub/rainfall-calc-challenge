@@ -39,6 +39,7 @@ int main(int argc, char * argv[]) {
 }
 
 int superSimple() {
+    //auto id = Timer::timerBegin();
     ifstream file(PATH);
 
     if (!file.is_open()) {
@@ -58,9 +59,16 @@ int superSimple() {
     for (int i = 6 ; i < 486 ; i += 5) {
 	relevantColumns.push_back(i);
     }
+
+    //auto preLoop = Timer::timerEnd(id);
+    //id = Timer::timerBegin();
+
+    //long completeLinesTime = 0, toLatTest = 0;
     
     // For each line in the file
     while (getline(file, line)) {
+	//auto id_loop = Timer::timerBegin();
+	auto lineLength = line.size();
 	
 	// Continue
 	if (line[0] == '=') continue;
@@ -72,27 +80,46 @@ int superSimple() {
 
 	const float lat_float = stof(lat);
 
+	//toLatTest += Timer::timerEnd(id_loop);
+	//id_loop = Timer::timerBegin();
+	
 	if (lat_float < 45.) continue;
 
-	
-	stringstream lineStream(line);
-	vector<string> columns;
-	int timeWithRain = 0;
+	int pos = 0, column = 0, posAfter = 0;
+	long timeWithRain = 0;
+	while (++pos < lineLength) {
+	    if (line[pos] == ',') {
+		column++;
+		if ((column - 6) % 5 == 0) {
+		    if (column != 1) {
+			posAfter = pos + 1;
+			while (line[posAfter++] != ',');
 
-	// For each column in the file
-	while (getline(lineStream, value, ',')) {
-	    columns.push_back(value);
-	}
+			for (int p = pos + 1 ; p < posAfter - 1 ; p++) {
+			    char atP[1];
+			    atP[0] = line[p];
+			    if (line[p] == '-') break;
+			    if (stoi(atP) > 0) {
+				timeWithRain++;
+				break;
+			    }
+			}
 
-	for (const auto& colIndex : relevantColumns) {
-	    string valueAtColIndex = columns[colIndex];
-	    if (stof(valueAtColIndex) > 0) {
-		timeWithRain++;
+		    } // END if not column 1
+		}
 	    }
 	}
+	
+	if (timeWithRain > 0) {
+	    string station = line.substr(3,8);
+	    timesForStations[station] += timeWithRain;
+	}
 
-	timesForStations[columns[0]] += timeWithRain;
+	//completeLinesTime += Timer::timerEnd(id_loop);
     }
+
+    //auto loop = Timer::timerEnd(id);
+    //id = Timer::timerBegin();
 
     // do dict stuff
     map<int,vector<string>> stationsForEachTime;
@@ -103,11 +130,22 @@ int superSimple() {
     int longestTime = (*(stationsForEachTime.rbegin())).first;
     int total = 0;
     for (const auto& stationID : stationsForEachTime[longestTime]) {
-	int stationNumeric = stoi(stationID.substr(3));
+	int stationNumeric = stoi(stationID);
 	total += stationNumeric;
     }
     
     file.close();
 
+    /*
+    auto postLoop = Timer::timerEnd(id);
+
+    cout << "Preloop " << preLoop / 1000
+	 << "\nLoop " << loop / 1000
+	 << "\n\tTo Lat Test " << toLatTest / 1000
+	 << "\n\tComplete Lines " << completeLinesTime / 1000
+	 << "\n\t(Other) " << ( loop - completeLinesTime - toLatTest ) / 1000
+	 << "\nPostloop " << postLoop / 1000
+	 << endl;
+    */
     return total;
 }
