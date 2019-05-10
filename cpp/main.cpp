@@ -96,10 +96,9 @@ int superSimple() {
 			while (line[posAfter++] != ',');
 
 			for (int p = pos + 1 ; p < posAfter - 1 ; p++) {
-			    char atP[1];
-			    atP[0] = line[p];
-			    if (line[p] == '-') break;
-			    if (stoi(atP) > 0) {
+			    int digit = (int)line[p];
+			    if (digit == 45) break; // test for '-'
+			    if (digit > 48) {
 				timeWithRain++;
 				break;
 			    }
