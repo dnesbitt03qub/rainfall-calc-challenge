@@ -79,6 +79,27 @@ All tests can be run locally using `run_tests.sh`. If you have docker installed 
 
 Individual tests can be run from their folders using `build_test.sh` and `run_test.sh` or, for Docker, `build_docker.sh` and `run_docker.sh`
 
+Leaderboard
+===========
+
+## Single Threaded
+
+| Name | Language | Answer | Time | Notes |
+|------|----------|-------:|-----:|-------|
+| plusuncold | C++          |   353402 |   8,336ms | optimized |
+| pard68     | rust         | 00353402 |  20,788ms | |
+| plusuncold | C++          |   353402 |  40,528ms | simple |
+| zombeej    | Node v11.3.0 |   353402 |  52,898ms | Single-threaded & slow as molasses |
+| specs      | python       | 00353402 |  61,070ms | ugly. needs cleanup. |
+| specs      | cython       | 00353402 | 105,690ms | ugly. needs cleanup. | 
+
+## Concurrent
+
+
+| Name | Language | Answer | Time | Notes |
+|------|----------|--------|------|-------|
+| zombeej | Node v11.3.0 | 353402 | 22,064ms | Multi-threaded |
+
 [0]: https://xe.pw/6emD
 [1]: https://xe.pw/6emC
 [2]: https://www.0x44.pw/trdc/201905challenge.tar.gz
