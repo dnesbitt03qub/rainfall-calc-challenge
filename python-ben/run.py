@@ -38,4 +38,4 @@ max_station = sum([int(station[3:]) for station in stations if stations[station]
 end = time()
 total_time = int((end - start) * 1000)
 
-print(f"Ben Green, Python, {max_station}, {total_time}ms, Somewhat optimized")
+print(f"Ben Green, Python, {max_station}, {total_time}ms, Optimized")
