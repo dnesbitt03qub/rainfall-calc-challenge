@@ -1,10 +1,11 @@
 import os
+from collections import defaultdict
 from time import time
 
 file_location = os.path.join('..', '..', 'data', 'all.csv')
 
 def assume_single_max():
-    stations = {}
+    stations = defaultdict(int)
     start = time()
 
     with open(file_location, 'r') as file:
@@ -26,11 +27,6 @@ def assume_single_max():
                                 line[15] is not '0' or line[16] is not '0' or line[17] is not '0' or line[18] is not '0'))))):
                 
                 values = line.split(',')
-                
-                curr_station = values[0]
-                if curr_station not in stations:
-                    stations[curr_station] = 0
-
                 stations[values[0]] += len([1 for val in values[6::5] if val[0] not in ('-', '0')])
 
 
@@ -41,7 +37,7 @@ def assume_single_max():
     return max_station, int((end - start) * 1000)
 
 def possible_multiple_max():
-    stations = {}
+    stations = defaultdict(int)
     max_value = 0
     max_stations = []
     start = time()
@@ -67,8 +63,6 @@ def possible_multiple_max():
                 values = line.split(',')
                 
                 curr_station = values[0]
-                if curr_station not in stations:
-                    stations[curr_station] = 0
 
                 # 96 is the number of 15-minute segments in a day
                 for i in range(96):
