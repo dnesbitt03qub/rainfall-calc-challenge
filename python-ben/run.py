@@ -42,6 +42,8 @@ def assume_single_max():
 
 def possible_multiple_max():
     stations = {}
+    max_value = 0
+    max_stations = []
     start = time()
 
     with open(file_location, 'r') as file:
