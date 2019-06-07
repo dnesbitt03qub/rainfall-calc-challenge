@@ -84,14 +84,15 @@ Leaderboard
 
 ## Single Threaded
 
-| Name | Language | Answer | Time | Notes |
-|------|----------|-------:|-----:|-------|
-| plusuncold | C++          |   353402 |   8,336ms | optimized |
-| pard68     | rust         | 00353402 |  20,788ms | |
-| plusuncold | C++          |   353402 |  40,528ms | simple |
+| Name       | Language     |   Answer |      Time | Notes                              |
+|------------|--------------|---------:|----------:|------------------------------------|
+| plusuncold | C++          |   353402 |   8,336ms | optimized                          |
+| pard68     | rust         | 00353402 |  20,788ms |                                    |
+| Ben Green  | Python       |   353402 |  29,243ms | Optimized                          |
+| plusuncold | C++          |   353402 |  40,528ms | simple                             |
 | zombeej    | Node v11.3.0 |   353402 |  52,898ms | Single-threaded & slow as molasses |
-| specs      | python       | 00353402 |  61,070ms | ugly. needs cleanup. |
-| specs      | cython       | 00353402 | 105,690ms | ugly. needs cleanup. | 
+| specs      | python       | 00353402 |  61,070ms | ugly. needs cleanup.               |
+| specs      | cython       | 00353402 | 105,690ms | ugly. needs cleanup.               |
 
 ## Concurrent
 
