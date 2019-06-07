@@ -31,7 +31,7 @@ def assume_single_max():
                 if curr_station not in stations:
                     stations[curr_station] = 0
 
-                stations[curr_station] += len([1 for val in values[6::5] if int(val) > 0]) # ord optimization here?
+                stations[values[0]] += len([1 for val in values[6::5] if val[0] not in ('-', '0')])
 
 
             line = file.readline()
